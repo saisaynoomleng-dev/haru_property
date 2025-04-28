@@ -3,6 +3,7 @@ import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
+import { FaChevronRight, FaRegArrowAltCircleRight } from 'react-icons/fa';
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
@@ -10,9 +11,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
+          'bg-brand-neutral-700 text-brand-neutral-100 rounded-full font-semibold hover:scale-[0.95] cursor-pointer dark:bg-brand-neutral-100 dark:text-brand-neutral-700',
 
-        link: 'text-primary underline-offset-4 hover:underline',
+        link: 'font-semibold cursor-pointer hover:text-brand-neutral-400 group dark:text-brand-neutral-100 ',
         darkSwitch:
           'dark:bg-brand-neutral-100 dark:text-brand-neutral-700 bg-brand-neutral-700 text-brand-neutral-100 !w-[25px] !h-[25px] rounded-full',
       },
@@ -35,6 +36,7 @@ function Button({
   variant,
   size,
   asChild = false,
+  children,
   ...props
 }: React.ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
@@ -47,7 +49,19 @@ function Button({
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
-    />
+    >
+      {children}
+      {variant === 'link' && (
+        <span>
+          <FaChevronRight className="group-hover:translate-x-1 transition-transform duration-500 ease-out" />
+        </span>
+      )}
+      {variant === 'default' && (
+        <span>
+          <FaRegArrowAltCircleRight className="group-hover:translate-x-1 transition-transform duration-500 ease-out" />
+        </span>
+      )}
+    </Comp>
   );
 }
 
