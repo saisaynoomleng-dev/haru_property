@@ -6,7 +6,9 @@ const Bounded = ({
   children,
   className,
 }: BoundedProps) => {
-  return <Comp className={clsx('relative', className)}>{children}</Comp>;
+  return (
+    <Comp className={clsx('relative pt-12 z-10', className)}>{children}</Comp>
+  );
 };
 
 export default Bounded;

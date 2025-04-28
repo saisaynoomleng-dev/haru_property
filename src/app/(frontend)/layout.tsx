@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
+import Header from '@/components/Header';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,8 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <main className="font-objectivity">{children}</main>
+    <ClerkProvider dynamic>
+      <main className="font-objectivity">
+        <Header />
+        {children}
+      </main>
     </ClerkProvider>
   );
 }
