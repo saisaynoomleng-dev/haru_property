@@ -1,7 +1,11 @@
+import Bounded from '@/components/Bounded';
+import { Button } from '@/components/ui/button';
+
 export default function Home() {
   return (
-    <main>
+    <Bounded>
       <h1>Welcom Next JS</h1>
-    </main>
+      <Button>Hi</Button>
+    </Bounded>
   );
 }

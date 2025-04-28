@@ -164,6 +164,6 @@
     @apply scroll-smooth;
   }
   body {
-    @apply min-h-dvh overflow-x-hidden text-fs-400 text-brand-primary tracking-normal leading-brand-100 bg-brand-light-100 dark:bg-brand-neutral-700 dark:text-brand-neutral-100;
+    @apply min-h-dvh overflow-x-hidden text-fs-400 text-brand-primary tracking-normal leading-brand-100 bg-brand-neutral-200 dark:bg-brand-neutral-700 dark:text-brand-neutral-100;
   }
 }
