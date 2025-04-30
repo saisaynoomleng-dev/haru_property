@@ -14,6 +14,8 @@ import {
 import { IoIosChatbubbles } from 'react-icons/io';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
+import { submitSubscriptionForm } from '@/lib/actions';
+import SubscriptionForm from './SubscriptionForm';
 
 const Footer = () => {
   const footerLinks = [
@@ -28,6 +30,7 @@ const Footer = () => {
     { title: 'Pricing', url: '/pricing' },
     { title: 'FAQ', url: '/faqs' },
   ];
+
   return (
     <footer className="grid grid-cols-2 grid-rows-[1fr_max-content_min-content] gap-5 md:gap-10 p-5 md:p-10 bg-brand-neutral-700 text-brand-neutral-100 dark:bg-brand-neutral-500 dark:text-brand-neutral-200 rounded-l-lg rounded-r-lg">
       <div className="flex flex-col gap-5 col-start-1 row-start-1">
@@ -38,26 +41,8 @@ const Footer = () => {
           </Paragraph>
         </div>
 
-        <form className="flex flex-col gap-3 md:max-w-[80%] lg:max-w-[60%]">
-          <div>
-            <label htmlFor="email">
-              <span className="sr-only">Email</span>
-            </label>
-            <Input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="enter your email address"
-            />
-          </div>
-          <Button
-            variant="default"
-            type="submit"
-            className="bg-brand-neutral-100 text-brand-neutral-700"
-          >
-            Subscribe
-          </Button>
-        </form>
+        {/* form */}
+        <SubscriptionForm />
       </div>
 
       <div className="col-start-1 row-start-3 self-end flex flex-col gap-3">

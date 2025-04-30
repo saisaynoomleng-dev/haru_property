@@ -43,6 +43,7 @@ const Header = () => {
             alt=""
             width={150}
             height={100}
+            style={{ width: 'auto', height: 'auto' }}
             className="hidden dark:block min-w-[100px]"
           />
 
@@ -52,6 +53,7 @@ const Header = () => {
             alt=""
             width={150}
             height={100}
+            style={{ width: 'auto', height: 'auto' }}
             className="block dark:hidden min-w-[100px]"
           />
         </Link>
