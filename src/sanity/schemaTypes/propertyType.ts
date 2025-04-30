@@ -173,8 +173,8 @@ export const propertyType = defineType({
   preview: {
     select: {
       name: 'title',
-      image: 'mainImage.0.image',
-      location: 'location',
+      image: 'mainImage.0.asset',
+      location: 'city',
       listingType: 'listingType',
     },
     prepare({ name, image, location, listingType }) {

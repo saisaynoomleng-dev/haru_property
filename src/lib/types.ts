@@ -30,3 +30,10 @@ export type FormStateProps = {
   status: 'success' | 'error';
   message: string;
 };
+
+// Page Tag
+export type PageTagProps = {
+  icon: React.ReactElement;
+  title: string;
+  className?: string;
+};
