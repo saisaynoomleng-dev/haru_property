@@ -54,7 +54,7 @@ export const agentType = defineType({
     defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'text',
+      type: 'blockContent',
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -81,7 +81,7 @@ export const agentType = defineType({
     select: {
       name: 'name',
       location: 'location',
-      image: 'image',
+      image: 'mainImage',
     },
     prepare({ name, location, image }) {
       return {

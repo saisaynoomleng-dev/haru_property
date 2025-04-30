@@ -32,7 +32,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="grid grid-cols-2 grid-rows-[1fr_max-content_min-content] gap-5 md:gap-10 p-5 md:p-10 bg-brand-neutral-700 text-brand-neutral-100 dark:bg-brand-neutral-500 dark:text-brand-neutral-200 rounded-l-lg rounded-r-lg">
+    <footer className="grid grid-cols-2 grid-rows-[1fr_max-content_min-content] gap-5 md:gap-10 p-5 md:p-10 bg-brand-neutral-700 text-brand-neutral-100 dark:bg-brand-neutral-600 dark:text-brand-neutral-200 rounded-l-lg rounded-r-lg">
       <div className="flex flex-col gap-5 col-start-1 row-start-1">
         <div className="space-y-2">
           <Title as="h2">Discover exclusive real estate opportunities</Title>
