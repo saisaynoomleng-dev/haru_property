@@ -19,3 +19,14 @@ export type ParagraphProps = {
   children: React.ReactNode;
   className?: string;
 };
+
+// Subscription
+export type SubscriptionProps = {
+  email: string;
+};
+
+// Form state
+export type FormStateProps = {
+  status: 'success' | 'error';
+  message: string;
+};

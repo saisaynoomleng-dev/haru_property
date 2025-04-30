@@ -1,0 +1,131 @@
+import { BiDetail } from 'react-icons/bi';
+import { defineArrayMember, defineField, defineType } from 'sanity';
+
+export const amenityType = defineType({
+  name: 'amenity',
+  icon: BiDetail,
+  type: 'object',
+  options: {
+    columns: 3,
+    collapsible: true,
+    collapsed: false,
+  },
+  fields: [
+    defineField({
+      name: 'garden',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'pool',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'elevator',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'securityCamera',
+      title: 'Security Camera',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'garage',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'dishwasher',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'laundry',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'internet',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'hotTub',
+      title: 'Hot Tubs',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'petFriendly',
+      title: 'Pet Friendly',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'smokeFree',
+      title: 'Smoke Free',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'gym',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'ac',
+      title: 'AC',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'cableTV',
+      title: 'Cable TV',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'kitchen',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'grill',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'sportField',
+      title: 'Sport Field',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'kidZone',
+      title: 'Kid Zone',
+      type: 'boolean',
+      initialValue: false,
+      validation: (rule) => rule.required(),
+    }),
+  ],
+});
