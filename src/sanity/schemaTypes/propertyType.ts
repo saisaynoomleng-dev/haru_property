@@ -83,7 +83,7 @@ export const propertyType = defineType({
       name: 'price',
       title: 'Price',
       description: 'provide per month for rent',
-      type: 'string',
+      type: 'number',
       validation: (rule) => rule.required(),
       group: 'details',
     }),

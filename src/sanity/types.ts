@@ -168,6 +168,8 @@ export type BlockContent = Array<
     }
 >;
 
+export type Amenity = Array<string>;
+
 export type Property = {
   _id: string;
   _type: 'property';
@@ -180,7 +182,7 @@ export type Property = {
   listingType?: 'sale' | 'rent';
   city?: string;
   address?: string;
-  price?: string;
+  price?: number;
   bedrooms?: number;
   bathrooms?: number;
   parking?: boolean;
@@ -303,28 +305,6 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type Amenity = {
-  _type: 'amenity';
-  garden?: boolean;
-  pool?: boolean;
-  elevator?: boolean;
-  securityCamera?: boolean;
-  garage?: boolean;
-  dishwasher?: boolean;
-  laundry?: boolean;
-  internet?: boolean;
-  hotTub?: boolean;
-  petFriendly?: boolean;
-  smokeFree?: boolean;
-  gym?: boolean;
-  ac?: boolean;
-  cableTV?: boolean;
-  kitchen?: boolean;
-  grill?: boolean;
-  sportField?: boolean;
-  kidZone?: boolean;
-};
-
 export type Slug = {
   _type: 'slug';
   current?: string;
@@ -348,6 +328,7 @@ export type AllSanitySchemaTypes =
   | Geopoint
   | Blog
   | BlockContent
+  | Amenity
   | Property
   | Agent
   | SanityImageCrop
@@ -355,7 +336,6 @@ export type AllSanitySchemaTypes =
   | SanityImageAsset
   | SanityAssetSourceData
   | SanityImageMetadata
-  | Amenity
   | Slug
   | Subscription;
 export declare const internalGroqTypeReferenceTo: unique symbol;
@@ -390,7 +370,7 @@ export type AGENT_QUERYResult = {
   listing: Array<{
     title: string | null;
     slug: Slug | null;
-    price: string | null;
+    price: number | null;
     mainImage: Array<{
       asset?: {
         _ref: string;
@@ -413,6 +393,54 @@ export type AGENT_QUERYResult = {
     } | null;
   } | null;
 } | null;
+// Variable: PROPERTIES_QUERY
+// Query: *[_type == 'property' && defined(slug.current) && (!defined($search) || title match $search || type match $search || listingType match $search || address match $search) && (!defined($type) || type == $type) && (!defined($listingType) || listingType == $listingType) ]{  title,  slug,  type,  sqft,  bathrooms,  bedrooms,  address,  listingType,  price,  parking,  mainImage[0]{    alt,    asset->{url}  } } | order(_createdAt)
+export type PROPERTIES_QUERYResult = Array<{
+  title: string | null;
+  slug: Slug | null;
+  type: 'apartment' | 'house' | 'loft' | 'office' | null;
+  sqft: number | null;
+  bathrooms: number | null;
+  bedrooms: number | null;
+  address: string | null;
+  listingType: 'rent' | 'sale' | null;
+  price: number | null;
+  parking: boolean | null;
+  mainImage: {
+    alt: string | null;
+    asset: {
+      url: string | null;
+    } | null;
+  } | null;
+}>;
+// Variable: PROPERTY_QUERY
+// Query: *[_type == 'property' && slug.current == $slug][0]{  title,  slug,  type,  sqft,  bathrooms,  bedrooms,  address,  listingType,  shortDesc,  longDesc,  price,  parking,  agent->{    name,    slug  },  city,  mainImage[]{    alt,    asset->{url}  },  amenities }
+export type PROPERTY_QUERYResult = {
+  title: string | null;
+  slug: Slug | null;
+  type: 'apartment' | 'house' | 'loft' | 'office' | null;
+  sqft: number | null;
+  bathrooms: number | null;
+  bedrooms: number | null;
+  address: string | null;
+  listingType: 'rent' | 'sale' | null;
+  shortDesc: string | null;
+  longDesc: string | null;
+  price: number | null;
+  parking: boolean | null;
+  agent: {
+    name: string | null;
+    slug: Slug | null;
+  } | null;
+  city: string | null;
+  mainImage: Array<{
+    alt: string | null;
+    asset: {
+      url: string | null;
+    } | null;
+  }> | null;
+  amenities: Amenity | null;
+} | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -420,5 +448,7 @@ declare module '@sanity/client' {
   interface SanityQueries {
     "*[_type == 'agent'\n && defined(slug.current)]{\n  name,\n  slug,\n  location,\n  phone,\n  position,\n  email,\n  mainImage{\n    asset->{url}\n  }\n } | order(name)": AGENTS_QUERYResult;
     "*[_type == 'agent'\n && slug.current == $slug][0]{\n  name,\n  slug,\n  location,\n  phone,\n  email,\n  username,\n  position,\n  bio,\n  experience,\n  listing[]->{\n    title,\n    slug,\n    price,\n    mainImage[],\n    type\n  },\n  mainImage{\n    asset->{url}\n  }\n }": AGENT_QUERYResult;
+    "*[_type == 'property'\n && defined(slug.current)\n && (!defined($search) || title match $search || type match $search || listingType match $search || address match $search)\n && (!defined($type) || type == $type)\n && (!defined($listingType) || listingType == $listingType)\n ]{\n  title,\n  slug,\n  type,\n  sqft,\n  bathrooms,\n  bedrooms,\n  address,\n  listingType,\n  price,\n  parking,\n  mainImage[0]{\n    alt,\n    asset->{url}\n  }\n } | order(_createdAt)": PROPERTIES_QUERYResult;
+    "*[_type == 'property'\n && slug.current == $slug][0]{\n  title,\n  slug,\n  type,\n  sqft,\n  bathrooms,\n  bedrooms,\n  address,\n  listingType,\n  shortDesc,\n  longDesc,\n  price,\n  parking,\n  agent->{\n    name,\n    slug\n  },\n  city,\n  mainImage[]{\n    alt,\n    asset->{url}\n  },\n  amenities\n }": PROPERTY_QUERYResult;
   }
 }

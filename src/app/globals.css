@@ -167,3 +167,7 @@
     @apply min-h-dvh overflow-x-hidden text-fs-400 text-brand-primary tracking-normal leading-brand-100 bg-brand-neutral-200 dark:bg-brand-neutral-700 dark:text-brand-neutral-100;
   }
 }
+
+@utility custom-divider {
+  @apply w-[90%] h-[1px] bg-brand-neutral-500 mx-auto my-2;
+}
