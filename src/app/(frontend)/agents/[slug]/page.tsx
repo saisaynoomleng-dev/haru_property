@@ -107,11 +107,11 @@ const AgentDetail = async ({
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3">
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-3">
           {agent.listing?.map((property) => (
-            <PropertyCard key={property.slug?.current} {...property} />
+            <PropertyCard key={property.slug?.current} />
           ))}
-        </div>
+        </div> */}
       </div>
     </Bounded>
   );

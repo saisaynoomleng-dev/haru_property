@@ -37,3 +37,21 @@ export type PageTagProps = {
   title: string;
   className?: string;
 };
+
+// properties props
+export type PropertiesProps = {
+  searchParams: Promise<{
+    query?: string;
+    type?: string;
+    listingType: 'rent' | 'sale';
+    lowestFirst?: boolean;
+    highestFirst?: boolean;
+    page?: string;
+  }>;
+};
+
+// property filter
+export type PropertyFilterProps = {
+  query: string;
+  type: string;
+};
