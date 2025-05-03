@@ -18,6 +18,7 @@ export type ParagraphProps = {
   as?: 'p';
   children: React.ReactNode;
   className?: string;
+  variant?: 'full' | 'half';
 };
 
 // Subscription
@@ -54,4 +55,11 @@ export type PropertiesProps = {
 export type PropertyFilterProps = {
   query: string;
   type: string;
+};
+
+// Service Card
+export type ServiceCardProps = {
+  icon: React.ReactElement;
+  title: string;
+  body: string;
 };
