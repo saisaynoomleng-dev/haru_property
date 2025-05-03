@@ -33,7 +33,7 @@ const buttonVariants = cva(
 
 function Button({
   className,
-  variant,
+  variant = 'default',
   size,
   asChild = false,
   children,
